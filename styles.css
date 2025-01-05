@@ -4,6 +4,9 @@
     padding: 1rem;
     font-family: Arial, sans-serif;
 }
+h1, h2, .description {
+    text-align: center;
+}
 
 .input-section {
     display: flex;
