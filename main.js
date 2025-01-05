@@ -44,10 +44,19 @@ function addSkill() {
     // Create schedule display
     const scheduleSpan = document.createElement('span');
     
+    // Create delete button
+    const deleteBtn = document.createElement('button');
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.textContent = '✖';
+    deleteBtn.addEventListener('click', () => {
+        skillList.removeChild(skillItem);
+    });
+    
     // Add elements to skill item
     skillItem.innerHTML = `<strong>${skillInput.value}</strong>`;
     skillItem.appendChild(patternSelect);
     skillItem.appendChild(scheduleSpan);
+    skillItem.appendChild(deleteBtn);
 
     // Update schedule when pattern changes
     patternSelect.addEventListener('change', () => {
