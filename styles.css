@@ -61,3 +61,70 @@ button:hover {
 .pattern-select {
     min-width: 200px;
 }
+
+.calendar-toggle {
+    background-color: #4a90e2;
+    margin-left: 1rem;
+}
+
+.calendar-widget {
+    display: none;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.calendar-widget.visible {
+    display: block;
+}
+
+.calendar-months {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.month {
+    min-width: 250px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    padding: 0.5rem;
+}
+
+.month-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-size: 0.8em;
+    color: #666;
+}
+
+.days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    text-align: center;
+}
+
+.day {
+    padding: 0.25rem;
+    border-radius: 2px;
+}
+
+.day.study-day {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.day.today {
+    border: 2px solid #4a90e2;
+}
