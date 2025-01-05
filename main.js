@@ -6,7 +6,8 @@ const PATTERNS = {
     'Classic': [1, 2, 4, 7, 14, 30, 60, 120],
     'Aggressive': [1, 3, 7, 14, 30, 45, 90],
     'Gentle': [1, 2, 3, 5, 8, 13, 21, 34],
-    'Custom': [1, 4, 10, 20, 40, 80, 160]
+    'Custom': [1, 4, 10, 20, 40, 80, 160],
+    'Double': [1, 2, 4, 8, 16, 32, 64, 128]
 };
 
 const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
