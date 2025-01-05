@@ -35,6 +35,10 @@ function addSkill() {
     const skillItem = document.createElement('div');
     skillItem.className = 'skill-item';
 
+    // Create skill info container
+    const skillInfo = document.createElement('div');
+    skillInfo.className = 'skill-info';
+
     // Create pattern selector
     const patternSelect = document.createElement('select');
     patternSelect.className = 'pattern-select';
@@ -73,12 +77,15 @@ function addSkill() {
         }
     });
     
+    // Add elements to skill info
+    skillInfo.innerHTML = `<strong>${skillInput.value}</strong>`;
+    skillInfo.appendChild(patternSelect);
+    skillInfo.appendChild(scheduleSpan);
+    skillInfo.appendChild(calendarToggle);
+    skillInfo.appendChild(deleteBtn);
+
     // Add elements to skill item
-    skillItem.innerHTML = `<strong>${skillInput.value}</strong>`;
-    skillItem.appendChild(patternSelect);
-    skillItem.appendChild(scheduleSpan);
-    skillItem.appendChild(calendarToggle);
-    skillItem.appendChild(deleteBtn);
+    skillItem.appendChild(skillInfo);
     skillItem.appendChild(calendarWidget);
 
     // Update schedule when pattern changes

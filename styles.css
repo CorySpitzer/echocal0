@@ -51,11 +51,17 @@ button:hover {
 
 .skill-item {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 1rem;
     padding: 1rem;
     background-color: #f9f9f9;
     border-radius: 4px;
+}
+
+.skill-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .pattern-select {
