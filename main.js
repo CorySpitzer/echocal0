@@ -126,6 +126,12 @@ function updateSchedule(scheduleSpan, startDate, patternName) {
     // Clear previous content
     scheduleSpan.innerHTML = '';
 
+    // Add explanatory text
+    const explanationText = document.createElement('p');
+    explanationText.textContent = "How well did you know the concept or how well could you solve the problem?";
+    explanationText.style.marginBottom = '1rem';
+    scheduleSpan.appendChild(explanationText);
+
     dates.forEach(date => {
         const dateItem = document.createElement('div');
         dateItem.className = 'date-item';
