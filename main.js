@@ -42,6 +42,15 @@ function addSkill() {
     const skillInfo = document.createElement('div');
     skillInfo.className = 'skill-info';
 
+    // Create skill header
+    const skillHeader = document.createElement('div');
+    skillHeader.className = 'skill-header';
+
+    // Create skill name section
+    const skillNameSection = document.createElement('div');
+    skillNameSection.className = 'skill-name';
+    skillNameSection.innerHTML = `<strong>${skillInput.value}</strong>`;
+
     // Create pattern selector
     const patternSelect = document.createElement('select');
     patternSelect.className = 'pattern-select';
@@ -53,7 +62,8 @@ function addSkill() {
     });
 
     // Create schedule display
-    const scheduleSpan = document.createElement('span');
+    const scheduleSpan = document.createElement('div');
+    scheduleSpan.className = 'schedule-span';
     
     // Create calendar toggle button
     const calendarToggle = document.createElement('button');
@@ -79,13 +89,16 @@ function addSkill() {
             updateCalendar(calendarWidget, startDateInput.value, patternSelect.value);
         }
     });
-    
+
+    // Add elements to skill header
+    skillHeader.appendChild(skillNameSection);
+    skillHeader.appendChild(patternSelect);
+    skillHeader.appendChild(calendarToggle);
+    skillHeader.appendChild(deleteBtn);
+
     // Add elements to skill info
-    skillInfo.innerHTML = `<strong>${skillInput.value}</strong>`;
-    skillInfo.appendChild(patternSelect);
+    skillInfo.appendChild(skillHeader);
     skillInfo.appendChild(scheduleSpan);
-    skillInfo.appendChild(calendarToggle);
-    skillInfo.appendChild(deleteBtn);
 
     // Add elements to skill item
     skillItem.appendChild(skillInfo);
@@ -109,13 +122,45 @@ function addSkill() {
 function updateSchedule(scheduleSpan, startDate, patternName) {
     const pattern = PATTERNS[patternName];
     const dates = generateDates(new Date(startDate), pattern);
-    scheduleSpan.textContent = dates.map(date => 
-        date.toLocaleDateString('en-US', { 
+    
+    // Clear previous content
+    scheduleSpan.innerHTML = '';
+
+    dates.forEach(date => {
+        const dateItem = document.createElement('div');
+        dateItem.className = 'date-item';
+
+        // Create rating dropdown
+        const ratingSelect = document.createElement('select');
+        ratingSelect.className = 'date-rating';
+        
+        // Add default "not rated" option
+        const defaultOption = document.createElement('option');
+        defaultOption.value = '0';
+        defaultOption.textContent = '-- Rate --';
+        ratingSelect.appendChild(defaultOption);
+        
+        // Add star ratings
+        for (let i = 1; i <= 5; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = '⭐'.repeat(i);
+            ratingSelect.appendChild(option);
+        }
+
+        // Create date text
+        const dateText = document.createElement('span');
+        dateText.textContent = date.toLocaleDateString('en-US', { 
             month: 'short', 
             day: 'numeric', 
             year: 'numeric' 
-        })
-    ).join(' → ');
+        });
+
+        // Assemble date item
+        dateItem.appendChild(dateText);
+        dateItem.appendChild(ratingSelect);
+        scheduleSpan.appendChild(dateItem);
+    });
 }
 
 function generateDates(startDate, pattern) {
